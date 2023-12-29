@@ -5,17 +5,17 @@ import { AppContext } from "../../App";
 
 const CountryCards = () => {
   const countriesInfo = useContext(AppContext!);
-  const { inputText } = useContext(AppContext!);
-  console.log(inputText);
+  const { term } = useContext(AppContext!);
+  console.log(term);
 
   return (
     <CountryCardsContainer>
       {countriesInfo?.countries
         .filter((item) => {
-          if (inputText === "") {
+          if (term === "") {
             return item;
           } else if (
-            item.name.toLowerCase().includes(inputText.toLocaleLowerCase())
+            item.name.toLowerCase().includes(term.toLocaleLowerCase())
           ) {
             return item;
           }

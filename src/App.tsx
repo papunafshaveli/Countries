@@ -4,6 +4,7 @@ import Filters from "./components/Filters/Filters";
 import Header from "./components/Header/Header";
 import countriesData from "./data.json";
 import CountryCards from "./components/CountryCards/CountryCards";
+import useDebounce from "./hooks/useDebounce";
 
 type CountrieProps = {
   name: string;
@@ -16,7 +17,7 @@ type CountrieProps = {
 export type AppContextProps = {
   countries: CountrieProps[];
   setCountries: Dispatch<SetStateAction<CountrieProps[]>>;
-  inputText: string;
+  term: string;
   setInputText: Dispatch<SetStateAction<string>>;
 };
 
@@ -26,11 +27,12 @@ function App() {
   const [countries, setCountries] = useState<any[]>(countriesData);
 
   const [inputText, setInputText] = useState("");
+  const term = useDebounce(inputText, 500) as string;
 
   return (
     <>
       <AppContext.Provider
-        value={{ countries, setCountries, inputText, setInputText }}
+        value={{ countries, setCountries, term, setInputText }}
       >
         <Header />
         <Filters />
