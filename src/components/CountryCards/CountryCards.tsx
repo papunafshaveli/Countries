@@ -4,29 +4,41 @@ import { useContext } from "react";
 import { AppContext } from "../../App";
 
 const CountryCards = () => {
-  const countriesInfo = useContext(AppContext);
+  const countriesInfo = useContext(AppContext!);
+  const { inputText } = useContext(AppContext!);
+  console.log(inputText);
 
   return (
     <CountryCardsContainer>
-      {countriesInfo?.countries.map((item) => {
-        return (
-          <Card key={item.name}>
-            <img src={item.flag} alt="" />
-            <h2>{item.name}</h2>
-            <p>
-              <b>Population: </b>
-              {item.population}
-            </p>
-            <p>
-              <b> Region:</b> {item.region}
-            </p>
-            <p>
-              <b>Capital: </b>
-              {item.capital}
-            </p>
-          </Card>
-        );
-      })}
+      {countriesInfo?.countries
+        .filter((item) => {
+          if (inputText === "") {
+            return item;
+          } else if (
+            item.name.toLowerCase().includes(inputText.toLocaleLowerCase())
+          ) {
+            return item;
+          }
+        })
+        .map((item) => {
+          return (
+            <Card key={item.name}>
+              <img src={item.flag} alt="" />
+              <h2>{item.name}</h2>
+              <p>
+                <b>Population: </b>
+                {item.population}
+              </p>
+              <p>
+                <b> Region:</b> {item.region}
+              </p>
+              <p>
+                <b>Capital: </b>
+                {item.capital}
+              </p>
+            </Card>
+          );
+        })}
     </CountryCardsContainer>
   );
 };
