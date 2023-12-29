@@ -4,6 +4,8 @@ import { AppContext } from "../../App";
 
 const Filters = () => {
   const { inputText, setInputText } = useContext(AppContext!);
+  const { region, setRegion } = useContext(AppContext!);
+  console.log(region);
 
   return (
     <FiltersContainer>
@@ -14,7 +16,7 @@ const Filters = () => {
         onChange={(e) => setInputText(e.target.value)}
       />
 
-      <select>
+      <select value={region} onChange={(e) => setRegion(e.target.value)}>
         <option value="none" hidden>
           Filter by Region
         </option>

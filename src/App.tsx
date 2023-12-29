@@ -19,6 +19,8 @@ export type AppContextProps = {
   setCountries: Dispatch<SetStateAction<CountrieProps[]>>;
   term: string;
   setInputText: Dispatch<SetStateAction<string>>;
+  region: string;
+  setRegion: Dispatch<SetStateAction<string>>;
 };
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -29,10 +31,19 @@ function App() {
   const [inputText, setInputText] = useState("");
   const term = useDebounce(inputText, 500) as string;
 
+  const [region, setRegion] = useState("All");
+
   return (
     <>
       <AppContext.Provider
-        value={{ countries, setCountries, term, setInputText }}
+        value={{
+          countries,
+          setCountries,
+          term,
+          setInputText,
+          region,
+          setRegion,
+        }}
       >
         <Header />
         <Filters />

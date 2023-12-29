@@ -6,11 +6,21 @@ import { AppContext } from "../../App";
 const CountryCards = () => {
   const countriesInfo = useContext(AppContext!);
   const { term } = useContext(AppContext!);
+  const { region } = useContext(AppContext!);
   console.log(term);
 
   return (
     <CountryCardsContainer>
       {countriesInfo?.countries
+        .filter((item) => {
+          if (region === "All") {
+            return item;
+          } else if (
+            item.region.toLowerCase().includes(region.toLocaleLowerCase())
+          ) {
+            return item;
+          }
+        })
         .filter((item) => {
           if (term === "") {
             return item;
