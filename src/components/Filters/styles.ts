@@ -8,7 +8,7 @@ export const FiltersContainer = styled.div`
 
   padding: 25px;
 
-  @media ${device.tablet} {
+  @media ${device.tabletS} {
     flex-direction: row;
     justify-content: space-between;
     padding: 20px 80px;

@@ -23,9 +23,17 @@ const CountryCards: React.FC<CountryCardsProps> = ({ countries }) => {
           <Card key={item.name}>
             <img src={item.flag} alt="" />
             <h2>{item.name}</h2>
-            <p>Population: {item.population}</p>
-            <p>Region: {item.region}</p>
-            <p>Capital: {item.capital}</p>
+            <p>
+              <b>Population: </b>
+              {item.population}
+            </p>
+            <p>
+              <b> Region:</b> {item.region}
+            </p>
+            <p>
+              <b>Capital: </b>
+              {item.capital}
+            </p>
           </Card>
         );
       })}
@@ -53,14 +61,28 @@ const CountryCardsContainer = styled.div`
 `;
 
 const Card = styled.div`
-  width: 270px;
-  height: 300px;
+  width: 200px;
+  height: 280px;
 
   padding: 25px;
 
   box-shadow: 0 7px 29px 0 rgba(100, 100, 111, 0.2);
 
+  transition: all 0.3s ease-in;
+  &:hover {
+    transform: scale(1.1);
+  }
+
   img {
     width: 100%;
+    padding-bottom: 15px;
+  }
+  h2 {
+    padding-bottom: 10px;
+    font-size: 1.6rem;
+  }
+  p {
+    font-size: 1.4rem;
+    padding-bottom: 7px;
   }
 `;
