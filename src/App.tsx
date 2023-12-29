@@ -7,7 +7,7 @@ import countriesData from "./data.json";
 import CountryCards from "./components/CountryCards/CountryCards";
 
 function App() {
-  const [countries, setCountries] = useState(countriesData);
+  const [countries] = useState(countriesData);
 
   return (
     <>
