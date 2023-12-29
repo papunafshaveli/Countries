@@ -1,24 +1,14 @@
 import styled from "styled-components";
 import { device } from "../../device";
+import { useContext } from "react";
+import { AppContext } from "../../App";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type CountryCardsProps = {
-  countries: any[];
-};
+const CountryCards = () => {
+  const countriesInfo = useContext(AppContext);
 
-type CountrieProps = {
-  name: string;
-  flag: string;
-  population: string;
-  region: string;
-  capital: string;
-};
-
-const CountryCards: React.FC<CountryCardsProps> = ({ countries }) => {
-  console.log(countries);
   return (
     <CountryCardsContainer>
-      {countries.map((item: CountrieProps) => {
+      {countriesInfo?.countries.map((item) => {
         return (
           <Card key={item.name}>
             <img src={item.flag} alt="" />
