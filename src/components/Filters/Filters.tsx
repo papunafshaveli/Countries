@@ -7,14 +7,13 @@ const Filters = () => {
 
   return (
     <FiltersContainer>
-      <form>
-        <input
-          type="search"
-          placeholder="Search for a country"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
-      </form>
+      <input
+        type="search"
+        placeholder="Search for a country"
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+      />
+
       <select>
         <option value="none" hidden>
           Filter by Region

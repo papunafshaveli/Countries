@@ -57,14 +57,14 @@ const CountryCardsContainer = styled.div`
   @media ${device.tabletS} {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px 80px;
   }
 `;
 
 const Card = styled.div`
   width: 200px;
-  height: 280px;
+  height: 290px;
 
   padding: 25px;
 
