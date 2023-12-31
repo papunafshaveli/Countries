@@ -10,8 +10,6 @@ const Filters = () => {
 
   const { inputText, setInputText, region, setRegion } = context;
 
-  console.log(region);
-
   return (
     <FiltersContainer>
       <input

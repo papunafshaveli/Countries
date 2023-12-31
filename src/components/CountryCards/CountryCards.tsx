@@ -11,7 +11,6 @@ const CountryCards = () => {
   }
 
   const { term, region } = context;
-  console.log(term);
 
   return (
     <CountryCardsContainer>

@@ -17,6 +17,8 @@ function App() {
 
   const [region, setRegion] = useState("All");
 
+  console.log(term);
+
   return (
     <>
       <AppContext.Provider
