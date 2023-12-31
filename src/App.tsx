@@ -1,28 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, createContext, Dispatch, SetStateAction } from "react";
+import { useState, createContext } from "react";
 import Filters from "./components/Filters/Filters";
 import Header from "./components/Header/Header";
 import countriesData from "./data.json";
 import CountryCards from "./components/CountryCards/CountryCards";
 import useDebounce from "./hooks/useDebounce";
-
-type CountrieProps = {
-  name: string;
-  flag: string;
-  population: string;
-  region: string;
-  capital: string;
-};
-
-export type AppContextProps = {
-  countries: CountrieProps[];
-  setCountries: Dispatch<SetStateAction<CountrieProps[]>>;
-  inputText: string;
-  term: string;
-  setInputText: Dispatch<SetStateAction<string>>;
-  region: string;
-  setRegion: Dispatch<SetStateAction<string>>;
-};
+import { AppContextProps } from "./types/types";
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
