@@ -5,8 +5,12 @@ import { AppContext } from "../../App";
 
 const CountryCards = () => {
   const countriesInfo = useContext(AppContext!);
-  const { term } = useContext(AppContext!);
-  const { region } = useContext(AppContext!);
+  const context = useContext(AppContext);
+  if (!context) {
+    return null;
+  }
+
+  const { term, region } = context;
   console.log(term);
 
   return (

@@ -3,8 +3,13 @@ import { FiltersContainer } from "./styles";
 import { AppContext } from "../../App";
 
 const Filters = () => {
-  const { inputText, setInputText } = useContext(AppContext!);
-  const { region, setRegion } = useContext(AppContext!);
+  const context = useContext(AppContext);
+  if (!context) {
+    return null;
+  }
+
+  const { inputText, setInputText, region, setRegion } = context;
+
   console.log(region);
 
   return (

@@ -17,6 +17,7 @@ type CountrieProps = {
 export type AppContextProps = {
   countries: CountrieProps[];
   setCountries: Dispatch<SetStateAction<CountrieProps[]>>;
+  inputText: string;
   term: string;
   setInputText: Dispatch<SetStateAction<string>>;
   region: string;
@@ -40,6 +41,7 @@ function App() {
           countries,
           setCountries,
           term,
+          inputText,
           setInputText,
           region,
           setRegion,
