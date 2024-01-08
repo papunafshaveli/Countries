@@ -16,4 +16,6 @@ export type AppContextProps = {
   setInputText: Dispatch<SetStateAction<string>>;
   region: string;
   setRegion: Dispatch<SetStateAction<string>>;
+  changeTheme: boolean;
+  setChangeTheme: Dispatch<SetStateAction<boolean>>;
 };

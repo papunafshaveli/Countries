@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../device";
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<{ changeTheme: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,6 +15,11 @@ export const HeaderContainer = styled.div`
   @media ${device.tabletS} {
     padding: 20px 80px;
   }
+
+  background-color: ${({ changeTheme }) =>
+    changeTheme ? "hsl(209, 23%, 22%);" : "white"};
+
+  color: ${({ changeTheme }) => (changeTheme ? "white" : "hsl(209, 23%, 22%)")};
 `;
 
 export const ThemeChanger = styled.div`

@@ -6,6 +6,7 @@ import countriesData from "./data.json";
 import CountryCards from "./components/CountryCards/CountryCards";
 import useDebounce from "./hooks/useDebounce";
 import { AppContextProps } from "./types/types";
+import styled from "styled-components";
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
@@ -17,10 +18,12 @@ function App() {
 
   const [region, setRegion] = useState("All");
 
-  console.log(term);
+  const [changeTheme, setChangeTheme] = useState(false);
+
+  console.log(changeTheme);
 
   return (
-    <>
+    <AppContainer changeTheme={changeTheme}>
       <AppContext.Provider
         value={{
           countries,
@@ -30,14 +33,24 @@ function App() {
           setInputText,
           region,
           setRegion,
+          changeTheme,
+          setChangeTheme,
         }}
       >
         <Header />
         <Filters />
         <CountryCards />
       </AppContext.Provider>
-    </>
+    </AppContainer>
   );
 }
 
 export default App;
+
+const AppContainer = styled.div<{ changeTheme: boolean }>`
+  min-height: 100vh;
+  background-color: ${({ changeTheme }) =>
+    changeTheme ? "hsl(209, 23%, 22%);" : "white"};
+
+  color: ${({ changeTheme }) => (changeTheme ? "white" : "hsl(209, 23%, 22%)")};
+`;
