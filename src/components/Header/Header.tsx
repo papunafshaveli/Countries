@@ -8,11 +8,11 @@ const Header = () => {
   const context = useContext(AppContext);
 
   const handleThemeChange = () => {
-    context?.setChangeTheme(!context.changeTheme);
+    context?.setChangeTheme((prevTheme) => !prevTheme);
   };
 
   return (
-    <HeaderContainer changeTheme={context?.changeTheme}>
+    <HeaderContainer changeTheme={context?.changeTheme || false}>
       <h1>Where in the World?</h1>
       <ThemeChanger>
         {context?.changeTheme ? (

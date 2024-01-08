@@ -6,11 +6,11 @@ export const HeaderContainer = styled.div<{ changeTheme: boolean }>`
   align-items: center;
   justify-content: space-between;
 
+  cursor: pointer;
+
   padding: 25px;
 
   box-shadow: 0 2px 8px 0 rgba(99, 99, 99, 0.2);
-
-  background-color: white;
 
   @media ${device.tabletS} {
     padding: 20px 80px;
