@@ -6,6 +6,22 @@ export type CountrieProps = {
   population: string;
   region: string;
   capital: string;
+  nativeName: string;
+  subregion: string;
+  topLevelDomain: string[];
+  currencies: [
+    {
+      code: string;
+      name: string;
+      symbol: string;
+    }
+  ];
+  languages: [
+    {
+      name: string;
+    }
+  ];
+  borders: string[];
 };
 
 export type AppContextProps = {

@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { device } from "../../device";
 import { useContext } from "react";
 import { AppContext } from "../../App";
+import { useNavigate } from "react-router";
 
 const CountryCards = () => {
   const countriesInfo = useContext(AppContext!);
   const context = useContext(AppContext);
+  const navigate = useNavigate();
   if (!context) {
     return null;
   }
@@ -35,7 +37,12 @@ const CountryCards = () => {
         })
         .map((item) => {
           return (
-            <Card key={item.name}>
+            <Card
+              key={item.name}
+              onClick={() => {
+                navigate(`/countryPage/${item.name}`); // Use navigate directly here
+              }}
+            >
               <img src={item.flag} alt="" />
               <h2>{item.name}</h2>
               <p>

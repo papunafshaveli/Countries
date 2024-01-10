@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, createContext } from "react";
-import Filters from "./components/Filters/Filters";
 import Header from "./components/Header/Header";
 import countriesData from "./data.json";
-import CountryCards from "./components/CountryCards/CountryCards";
 import useDebounce from "./hooks/useDebounce";
 import { AppContextProps } from "./types/types";
 import styled from "styled-components";
+import { Route, Routes } from "react-router";
+import CountryPage from "./pages/CountryPage";
+import Home from "./pages/Home";
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
@@ -19,8 +20,6 @@ function App() {
   const [region, setRegion] = useState("All");
 
   const [changeTheme, setChangeTheme] = useState(false);
-
-  console.log(changeTheme);
 
   return (
     <AppContainer changeTheme={changeTheme}>
@@ -38,8 +37,10 @@ function App() {
         }}
       >
         <Header />
-        <Filters />
-        <CountryCards />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="countryPage/:country" element={<CountryPage />} />
+        </Routes>
       </AppContext.Provider>
     </AppContainer>
   );
