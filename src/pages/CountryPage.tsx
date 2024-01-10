@@ -3,6 +3,7 @@ import { AppContext } from "../App";
 import { useNavigate, useParams } from "react-router";
 import styled from "styled-components";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { device } from "../device";
 
 const CountryPage = () => {
   const { country } = useParams();
@@ -28,46 +29,48 @@ const CountryPage = () => {
         <ImageWrapper>
           <img src={selectedCountry?.flag} alt="flag" />
         </ImageWrapper>
-        <h2>{selectedCountry?.name}</h2>
-        <FirstInfo>
-          <p>
-            <b>Native Name: </b>
-            {selectedCountry?.nativeName}
-          </p>
-          <p>
-            <b>Population: </b>
-            {selectedCountry?.population}
-          </p>
-          <p>
-            <b>Region: </b>
-            {selectedCountry?.region}
-          </p>
-          <p>
-            <b>Sub Region: </b>
-            {selectedCountry?.subregion}
-          </p>
-          <p>
-            <b>Capital: </b>
-            {selectedCountry?.capital}
-          </p>
-        </FirstInfo>
-        <SecondInfo>
-          <p>
-            <b>Top Level Domain: </b>
-            {selectedCountry?.topLevelDomain}
-          </p>
-          <p>
-            <b>Currencies: </b>
-            {selectedCountry?.currencies !== undefined &&
-              selectedCountry?.currencies[0].name}
-          </p>
-          <p>
-            <b>Languages: </b>
-            {selectedCountry?.languages?.map((item) => (
-              <span key={item.name}>{item.name}; </span>
-            ))}
-          </p>
-        </SecondInfo>
+        <InfosWrapper>
+          <h2>{selectedCountry?.name}</h2>
+          <FirstInfo>
+            <p>
+              <b>Native Name: </b>
+              {selectedCountry?.nativeName}
+            </p>
+            <p>
+              <b>Population: </b>
+              {selectedCountry?.population}
+            </p>
+            <p>
+              <b>Region: </b>
+              {selectedCountry?.region}
+            </p>
+            <p>
+              <b>Sub Region: </b>
+              {selectedCountry?.subregion}
+            </p>
+            <p>
+              <b>Capital: </b>
+              {selectedCountry?.capital}
+            </p>
+          </FirstInfo>
+          <SecondInfo>
+            <p>
+              <b>Top Level Domain: </b>
+              {selectedCountry?.topLevelDomain}
+            </p>
+            <p>
+              <b>Currencies: </b>
+              {selectedCountry?.currencies !== undefined &&
+                selectedCountry?.currencies[0].name}
+            </p>
+            <p>
+              <b>Languages: </b>
+              {selectedCountry?.languages?.map((item) => (
+                <span key={item.name}>{item.name}; </span>
+              ))}
+            </p>
+          </SecondInfo>
+        </InfosWrapper>
       </InfoContainer>
     </CountryPageContainer>
   );
@@ -110,17 +113,31 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media ${device.tablet} {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   h2 {
     font-size: 2.6rem;
     padding: 20px 0;
+
+    @media ${device.tablet} {
+      padding: 0;
+    }
   }
 `;
 
 const ImageWrapper = styled.div`
-  max-width: 768px;
+  max-width: 425px;
   img {
     width: 100%;
   }
+`;
+const InfosWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 const FirstInfo = styled.div`
